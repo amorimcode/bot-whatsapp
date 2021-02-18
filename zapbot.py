@@ -24,12 +24,15 @@ class WhatsappBot:
             chat_box = self.driver.find_element_by_class_name('DuUXI')
             time.sleep(3)
             chat_box.click()
-            chat_box.send_keys(self.message)
-            send_button = self.driver.find_element_by_xpath(
-                '//span[@data-icon="send"]')
-            time.sleep(3)
-            send_button.click()
-            time.sleep(3)
+            n = 0
+            while n < 10:
+                chat_box.send_keys(self.message)
+                send_button = self.driver.find_element_by_xpath(
+                    '//span[@data-icon="send"]')
+                time.sleep(3)
+                send_button.click()
+                time.sleep(3)
+                n += 1
 
 bot = WhatsappBot()
 bot.SendMessage()
